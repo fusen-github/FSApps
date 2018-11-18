@@ -80,10 +80,13 @@
 
 
 /**
- 分享视频
+ 分享视频给QQ好友
  */
 - (void)shareVideo;
 
+- (void)shareToQZoneForMsg:(NSString *)message;
+
+- (void)shareToQZoneForUrl;
 
 
 @end

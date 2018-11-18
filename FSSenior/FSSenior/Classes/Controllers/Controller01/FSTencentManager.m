@@ -169,7 +169,61 @@ static NSError * generateErrorWithDesc(NSString *desc)
     NSLog(@"code = %d", code);
 }
 
+/********************************* 分享到Q空间 ***********************************************/
 
+- (void)shareToQZoneForMsg:(NSString *)message
+{
+    NSArray *paths = @[@"11.jpg", @"22.jpg", @"33.jpg"];
+    
+    NSMutableArray *imageDatas = [NSMutableArray array];
+    
+    for (NSString *name in paths)
+    {
+        NSString *fullPath = [[NSBundle mainBundle] pathForResource:name ofType:nil];
+        
+        NSData *data = [NSData dataWithContentsOfFile:fullPath];
+        
+        if (data)
+        {
+            [imageDatas addObject:data];
+        }
+    }
+    
+    imageDatas = nil;
+    
+    message = @"https://www.jianshu.com/p/763f6321c89e";
+    
+    QQApiImageArrayForQZoneObject *obj = [QQApiImageArrayForQZoneObject objectWithimageDataArray:imageDatas title:message extMap:nil];
+    
+    SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:obj];
+    
+    QQApiSendResultCode code = [QQApiInterface SendReqToQZone:request];
+    
+    NSLog(@"%d",code);
+}
+
+
+- (void)shareToQZoneForUrl
+{
+    NSString *urlStr = @"https://www.jianshu.com/p/763f6321c89e";
+    
+    NSURL *url = [NSURL URLWithString:urlStr];
+    
+    NSString *title = @"标题";
+    
+    NSString *fullPath = [[NSBundle mainBundle] pathForResource:@"11.jpg" ofType:nil];
+    
+    NSURL *previewImageUrl = [NSURL fileURLWithPath:fullPath];
+    
+    QQApiNewsObject *obj = [QQApiNewsObject objectWithURL:url title:title description:@"描述info" previewImageURL:previewImageUrl];
+    
+    SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:obj];
+    
+    QQApiSendResultCode code = [QQApiInterface SendReqToQZone:request];
+    
+    NSLog(@"code = %d", code);
+    
+}
 
 @end
 
@@ -270,9 +324,9 @@ static NSError * generateErrorWithDesc(NSString *desc)
  * \remarks 正确返回示例: \snippet example/getUserInfoResponse.exp success
  *          错误返回示例: \snippet example/getUserInfoResponse.exp fail
  */
-- (void)getUserInfoResponse:(APIResponse*) response
+- (void)getUserInfoResponse:(APIResponse *)response
 {
-    
+    NSLog(@"%@",response.jsonResponse);
 }
 
 
@@ -345,6 +399,30 @@ static NSError * generateErrorWithDesc(NSString *desc)
         if ([self.oauth getUserInfo])
         {
             NSLog(@"获取用户信息——成功");
+            
+            /*
+             https://graph.qq.com/user/get_user_info?
+             access_token=*************&
+             oauth_consumer_key=12345&
+             openid=****************
+             */
+            
+            NSString *urlStr = [NSString stringWithFormat:@"https://graph.qq.com/user/get_user_info?access_token=%@&oauth_consumer_key=%@&openid=%@",_oauth.accessToken,_oauth.appId,_oauth.openId];
+            
+            NSURL *url = [NSURL URLWithString:urlStr];
+            
+            NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse * response, NSError *error) {
+                
+                NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"%@",str);
+                /*
+                 返回json {"ret":100008,"msg":"client request's app is not existed"}
+                 appId不存在，可能是因为app还没有被审核通过吧
+                 */
+            }];
+            
+            [dataTask resume];
         }
         else
         {

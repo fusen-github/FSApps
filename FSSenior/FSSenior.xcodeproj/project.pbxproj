@@ -19,9 +19,12 @@
 		041287F2219E89E600EEC548 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041287F1219E89E600EEC548 /* SystemConfiguration.framework */; };
 		041287F3219E89F400EEC548 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 041287CD219D671C00EEC548 /* libstdc++.tbd */; };
 		04128808219F204500EEC548 /* FSConstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 04128807219F204500EEC548 /* FSConstance.m */; };
+		049076FB21A1AF4000E855B6 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049076F721A1AF3F00E855B6 /* 11.jpg */; };
+		049076FC21A1AF4000E855B6 /* 354.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049076F821A1AF3F00E855B6 /* 354.jpg */; };
+		049076FD21A1AF4000E855B6 /* 33.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049076F921A1AF3F00E855B6 /* 33.jpg */; };
+		049076FE21A1AF4000E855B6 /* 22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049076FA21A1AF3F00E855B6 /* 22.jpg */; };
 		04E130F8219FE39A00AF1C43 /* FSTencentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E130F7219FE39A00AF1C43 /* FSTencentManager.m */; };
 		04E13105219FFD4E00AF1C43 /* FSQQShare.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E13104219FFD4E00AF1C43 /* FSQQShare.m */; };
-		04E1310921A00A1900AF1C43 /* 354.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E1310821A00A1900AF1C43 /* 354.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,12 +54,15 @@
 		041287F1219E89E600EEC548 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		04128806219F204500EEC548 /* FSConstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSConstance.h; sourceTree = "<group>"; };
 		04128807219F204500EEC548 /* FSConstance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSConstance.m; sourceTree = "<group>"; };
+		049076F721A1AF3F00E855B6 /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		049076F821A1AF3F00E855B6 /* 354.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 354.jpg; sourceTree = "<group>"; };
+		049076F921A1AF3F00E855B6 /* 33.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 33.jpg; sourceTree = "<group>"; };
+		049076FA21A1AF3F00E855B6 /* 22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 22.jpg; sourceTree = "<group>"; };
 		04E130F6219FE39A00AF1C43 /* FSTencentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSTencentManager.h; sourceTree = "<group>"; };
 		04E130F7219FE39A00AF1C43 /* FSTencentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSTencentManager.m; sourceTree = "<group>"; };
 		04E130FC219FE5D000AF1C43 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04E13103219FFD4E00AF1C43 /* FSQQShare.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSQQShare.h; sourceTree = "<group>"; };
 		04E13104219FFD4E00AF1C43 /* FSQQShare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSQQShare.m; sourceTree = "<group>"; };
-		04E1310821A00A1900AF1C43 /* 354.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 354.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +122,10 @@
 			isa = PBXGroup;
 			children = (
 				040481AA219D598400CD251D /* Assets.xcassets */,
-				04E1310821A00A1900AF1C43 /* 354.jpg */,
+				049076F721A1AF3F00E855B6 /* 11.jpg */,
+				049076FA21A1AF3F00E855B6 /* 22.jpg */,
+				049076F921A1AF3F00E855B6 /* 33.jpg */,
+				049076F821A1AF3F00E855B6 /* 354.jpg */,
 				040481AF219D598400CD251D /* Info.plist */,
 				040481B0219D598400CD251D /* main.m */,
 				04E130FC219FE5D000AF1C43 /* PrefixHeader.pch */,
@@ -264,8 +273,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04E1310921A00A1900AF1C43 /* 354.jpg in Resources */,
+				049076FD21A1AF4000E855B6 /* 33.jpg in Resources */,
+				049076FB21A1AF4000E855B6 /* 11.jpg in Resources */,
 				040481AB219D598400CD251D /* Assets.xcassets in Resources */,
+				049076FE21A1AF4000E855B6 /* 22.jpg in Resources */,
+				049076FC21A1AF4000E855B6 /* 354.jpg in Resources */,
 				041287E2219D70CB00EEC548 /* 1111@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

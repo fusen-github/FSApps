@@ -26,11 +26,13 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    //    [self testLoginAuth];
+//        [self testLoginAuth];
     
-    //    [self testQQShare_text];
+//        [self testQQShare_text];
     
-    [self testShareVideo];
+//    [self testShareVideo];
+    
+    [self testShareToQZoneMesaage];
 }
 
 - (void)testLoginAuth
@@ -66,6 +68,15 @@
 - (void)testShareVideo
 {
     [[FSTencentManager shareManager] shareVideo];
+}
+
+/********** QQ Zone *****/
+
+- (void)testShareToQZoneMesaage
+{
+//    [[FSTencentManager shareManager] shareToQZoneForMsg:@"sen测试分享发说说"];
+    
+    [[FSTencentManager shareManager] shareToQZoneForUrl];
 }
 
 
