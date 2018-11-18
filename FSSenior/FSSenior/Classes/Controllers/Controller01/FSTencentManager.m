@@ -112,6 +112,65 @@ static NSError * generateErrorWithDesc(NSString *desc)
     NSLog(@"code = %d",code);
 }
 
+/**
+ 测试代码
+ */
+- (void)shareUrl
+{
+    NSURL *url = [NSURL URLWithString:@"https://news.163.com/18/1118/15/E0TH6O87000189FH.html"];
+    
+    NSString *title = @"测试新闻标题FS";
+    
+    NSString *desc = @"描述信息....";
+    
+    NSURL *imageUrl = [NSURL URLWithString:@"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1542536641&di=cb703f8e78eda0e8fb6dc21640b500ab&src=http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/0948545db38f12c59053aa325cb43ae4.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100"];
+    
+    QQApiNewsObject *obj = [QQApiNewsObject objectWithURL:url title:title description:desc previewImageURL:imageUrl];
+    
+    SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:obj];
+    
+    QQApiSendResultCode code = [QQApiInterface sendReq:request];
+    
+    NSLog(@"code = %d", code);
+}
+
+- (void)shareNewsUrl:(NSURL *)newsUrl previewImageUrl:(NSURL *)imageUrl title:(NSString *)title desc:(NSString *)desc
+{
+    QQApiNewsObject *obj = [QQApiNewsObject objectWithURL:newsUrl title:title description:desc previewImageURL:imageUrl];
+    
+    SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:obj];
+    
+    QQApiSendResultCode code = [QQApiInterface sendReq:request];
+    
+    NSLog(@"code = %d", code);
+}
+
+- (void)shareVideo
+{
+    NSURL *videlUrl = [NSURL URLWithString:@"http://v.ifeng.com/201811/video_28347664.shtml"];
+    
+    NSString *title = @"fs_视频";
+    
+    NSString *desc = @"测试xxx_fs";
+    
+    NSURL *previewImgUrl = [NSURL URLWithString:@"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1542536641&di=cb703f8e78eda0e8fb6dc21640b500ab&src=http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/0948545db38f12c59053aa325cb43ae4.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100"];
+    
+    QQApiVideoObject *obj = [QQApiVideoObject objectWithURL:videlUrl title:title description:desc previewImageURL:previewImgUrl];
+    
+    NSURL *flash = [NSURL URLWithString:@"http://ips.ifeng.com/video19.ifeng.com/video09/2018/11/18/p4801447-102-009-174937.mp4?vid=7e6f3361-fef6-4bde-a6ad-2831425af927&uid=1542539275760_t8j74j9314&from=v_Free&pver=vHTML5Player_v2.0.0&sver=&se=经典KO&cat=81-82&ptype=81&platform=pc&sourceType=h5&dt=NaN&gid=lwyV8WcmhCNF&sign=06ebbc8cb467a8016932da8c353b07c7&tm=1542539453254"];
+    
+    /* 一定要设置flash_url，这个是播放视频的地址 */
+    [obj setFlashURL:flash];
+    
+    SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:obj];
+    
+    QQApiSendResultCode code = [QQApiInterface sendReq:request];
+    
+    NSLog(@"code = %d", code);
+}
+
+
+
 @end
 
 @implementation FSTencentManager (QQApiInterfaceDelegate)

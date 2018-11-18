@@ -26,9 +26,11 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-//    [self testLoginAuth];
+    //    [self testLoginAuth];
     
-    [self testQQShare];
+    //    [self testQQShare_text];
+    
+    [self testShareVideo];
 }
 
 - (void)testLoginAuth
@@ -36,10 +38,13 @@
     [[FSTencentManager shareManager] loginOauth];
 }
 
-- (void)testQQShare
+- (void)testQQShare_text
 {
-//    [[FSTencentManager shareManager] shareTextToFriend:@"fs_测试分享文本到好友"];
-    
+    [[FSTencentManager shareManager] shareTextToFriend:@"fs_测试分享文本到好友"];
+}
+
+- (void)testQQShare_image
+{
     NSString *path = [[NSBundle mainBundle] pathForResource:@"354.jpg" ofType:nil];
     
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -51,7 +56,16 @@
     NSError *error = nil;
     
     [[FSTencentManager shareManager] shareImageDataToFriend:data title:title desc:desc error:&error];
-    
+}
+
+- (void)testShareUrl
+{
+    [[FSTencentManager shareManager] shareUrl];
+}
+
+- (void)testShareVideo
+{
+    [[FSTencentManager shareManager] shareVideo];
 }
 
 
