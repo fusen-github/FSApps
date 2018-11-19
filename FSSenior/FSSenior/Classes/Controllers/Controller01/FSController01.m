@@ -8,10 +8,34 @@
 
 #import "FSController01.h"
 #import "FSTencentManager.h"
-#import "FSQQShare.h"
+
+static NSString * const kSectionTitle = @"sectionTitle";
+
+static NSString * const kSectionDatas = @"sectionDatas";
 
 
-@interface FSController01 ()
+
+static NSString * const kTitleKey = @"title";
+
+static NSString * const kActionKey = @"action";
+
+#define SeletorName(cmd) NSStringFromSelector(@selector(cmd))
+
+@interface FSController01 (Extention)
+
+- (void)q_Login;
+
+- (void)session_shareMsg;
+
+- (void)session_shareImage;
+
+- (void)session_shareUrl;
+
+@end
+
+@interface FSController01 ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
@@ -20,64 +44,169 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UITableView *tableView = [[UITableView alloc] init];
     
+    tableView.frame = self.view.bounds;
+    
+    tableView.delegate = self;
+    
+    tableView.dataSource = self;
+    
+    [self.view addSubview:tableView];
+    
+    NSArray *logins = @[@{kActionKey:SeletorName(q_Login),kTitleKey:@"QQ登陆"},];
+    
+    NSArray *sessions =
+  @[@{kActionKey:SeletorName(session_shareMsg),kTitleKey:@"分享text文本到Q会话"},
+    @{kActionKey:SeletorName(session_shareImage),kTitleKey:@"分享image到Q会话"},
+    @{kActionKey:SeletorName(session_shareUrl),kTitleKey:@"分享URL到Q会话"},
+    ];
+    
+    NSArray *qZones =
+  @[@{kActionKey:SeletorName(session_shareMsg),kTitleKey:@"分享text文本到Q会话"},];
+    
+    self.dataArray = @[@{kSectionDatas:logins,kSectionTitle:@"QQ登陆"},
+                       @{kSectionDatas:sessions,kSectionTitle:@"分享到QQ会话"},
+                       @{kSectionDatas:qZones,kSectionTitle:@"分享到QQ空间"},];
     
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//        [self testLoginAuth];
-    
-//        [self testQQShare_text];
-    
-//    [self testShareVideo];
-    
-    [self testShareToQZoneMesaage];
+    return self.dataArray.count;
 }
 
-- (void)testLoginAuth
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSDictionary *dict = [self.dataArray objectAtIndex:section];
+    
+    NSArray *array = [dict objectForKey:kSectionDatas];
+    
+    return array.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString * const kCellId = @"tencent_cell_id";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellId];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellId];
+        
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        
+        cell.textLabel.textColor = [UIColor darkTextColor];
+    }
+    
+    NSDictionary *dict = [self.dataArray objectAtIndex:indexPath.section];
+    
+    NSArray *array = [dict objectForKey:kSectionDatas];
+    
+    NSDictionary *rowDict = [array objectAtIndex:indexPath.row];
+    
+    NSString *title = [rowDict objectForKey:kTitleKey];
+    
+    cell.textLabel.text = title;
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSDictionary *dict = [self.dataArray objectAtIndex:section];
+
+    NSString *title = [dict objectForKey:kSectionTitle];
+    
+    return title;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dict = [self.dataArray objectAtIndex:indexPath.section];
+    
+    NSArray *array = [dict objectForKey:kSectionDatas];
+    
+    NSDictionary *rowDict = [array objectAtIndex:indexPath.row];
+    
+    SEL selector = NSSelectorFromString([rowDict objectForKey:kActionKey]);
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    [self performSelector:selector];
+#pragma clang diagnostic pop
+}
+
+@end
+
+@implementation FSController01 (Login)
+
+/**
+ QQ登陆
+ */
+- (void)q_Login
 {
     [[FSTencentManager shareManager] loginOauth];
 }
 
-- (void)testQQShare_text
+@end
+
+@implementation FSController01 (Session)
+
+/**
+ 分享文本到session
+ */
+- (void)session_shareMsg
 {
-    [[FSTencentManager shareManager] shareTextToFriend:@"fs_测试分享文本到好友"];
+    [[FSTencentManager shareManager] shareToSessionWithText:@"哈哈。。。"];
 }
 
-- (void)testQQShare_image
+- (void)session_shareImage
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"354.jpg" ofType:nil];
+    NSArray *names = @[@"a",@"b"];
     
-    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSMutableArray *tmpArray = [NSMutableArray array];
     
-    NSString *title = @"测试分享图片——标题";
+    for (NSString *n in names)
+    {
+        NSString *name = [NSString stringWithFormat:@"%@@2x",n];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"png"];
+        
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        
+        if (data)
+        {
+            [tmpArray addObject:data];
+        }
+    }
     
-    NSString *desc = @"测试分享图片——描述";
+    NSString *title = @"测试分享图片";
     
-    NSError *error = nil;
+    NSString *desc = @"测试描述";
     
-    [[FSTencentManager shareManager] shareImageDataToFriend:data title:title desc:desc error:&error];
+    [[FSTencentManager shareManager] shareToSessionImageData:tmpArray.firstObject previewImageData:tmpArray[1] title:title desc:desc];
 }
 
-- (void)testShareUrl
+- (void)session_shareUrl
 {
-    [[FSTencentManager shareManager] shareUrl];
-}
-
-- (void)testShareVideo
-{
-    [[FSTencentManager shareManager] shareVideo];
-}
-
-/********** QQ Zone *****/
-
-- (void)testShareToQZoneMesaage
-{
-//    [[FSTencentManager shareManager] shareToQZoneForMsg:@"sen测试分享发说说"];
+    NSURL *url = [NSURL URLWithString:@"https://news.163.com/18/1118/15/E0TH6O87000189FH.html"];
     
-    [[FSTencentManager shareManager] shareToQZoneForUrl];
+    NSString *title = @"测试新闻标题FS";
+    
+    NSString *desc = @"描述信息....";
+    
+    NSURL *imageUrl = [NSURL URLWithString:@"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1542536641&di=cb703f8e78eda0e8fb6dc21640b500ab&src=http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/0948545db38f12c59053aa325cb43ae4.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100"];
+
+    [[FSTencentManager shareManager] shareToSessionUrl:url title:title desc:desc previewImageURL:imageUrl];
 }
+
+
+
+@end
+
+@implementation FSController01 (Qzone)
 
 
 

@@ -33,7 +33,8 @@ static NSString * const kControllerKey = @"kControllerKey";
     
     [self.view addSubview:tableView];
     
-    self.dataArray = @[@{kTitleKey:@"社交分享",kControllerKey:@"FSController01"},];
+    self.dataArray = @[@{kTitleKey:@"Q(Zone)分享(登陆)",kControllerKey:@"FSController01"},
+                       @{kTitleKey:@"WeChat分享",kControllerKey:@"FSController02"},];
     
 }
 

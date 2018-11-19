@@ -47,23 +47,46 @@
  */
 
 
-/**
-分享纯文本给QQ好友
-*/
-- (void)shareTextToFriend:(NSString *)text;
 
 /**
- 分享纯图片给QQ好友
+ 分享纯文本到会话(qq好友、群、讨论组)
+
+ @param text 要分享的文本信息
  */
-- (void)shareImageDataToFriend:(NSData *)imgData
-                         title:(NSString *)title
-                          desc:(NSString *)desc
-                         error:(NSError **)error;
+- (void)shareToSessionWithText:(NSString *)text;
+
+
 
 /**
- 测试分享URL
+ 分享图片到会话
+
+ @param data 要分享的图片data
+ @param pData 预览图片对象
+ @param title 标题
+ @param desc 描述
  */
-- (void)shareUrl;
+- (void)shareToSessionImageData:(NSData *)data
+               previewImageData:(NSData *)pData
+                          title:(NSString *)title
+                           desc:(NSString *)desc;
+
+
+
+/**
+ 分享一个链接到会话
+
+ @param url 链接地址
+ @param title 标题
+ @param desc 描述
+ @param previewImageURL 预览的图片URL
+ 
+ */
+- (void)shareToSessionUrl:(NSURL *)url
+                    title:(NSString *)title
+                     desc:(NSString *)desc
+          previewImageURL:(NSURL *)previewImageURL;
+
+
 
 /**
  分享新闻接口

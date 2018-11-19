@@ -9,7 +9,6 @@
 #import "FSTencentManager.h"
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <TencentOpenAPI/QQApiInterface.h>
-#import "FSQQShare.h"
 
 static NSError * generateErrorWithDesc(NSString *desc)
 {
@@ -87,7 +86,7 @@ static NSError * generateErrorWithDesc(NSString *desc)
 
 @implementation FSTencentManager (Share)
 
-- (void)shareTextToFriend:(NSString *)text
+- (void)shareToSessionWithText:(NSString *)text
 {
     QQApiTextObject *obj = [QQApiTextObject objectWithText:text];
     
@@ -98,34 +97,29 @@ static NSError * generateErrorWithDesc(NSString *desc)
     NSLog(@"code = %d",code);
 }
 
-- (void)shareImageDataToFriend:(NSData *)imgData
-                         title:(NSString *)title
-                          desc:(NSString *)desc
-                         error:(NSError *__autoreleasing *)error
+- (void)shareToSessionImageData:(NSData *)data previewImageData:(NSData *)pData title:(NSString *)title desc:(NSString *)desc
 {
-    QQApiImageObject *imageApi = [QQApiImageObject objectWithData:imgData previewImageData:imgData title:title description:desc];
+    QQApiImageObject *obj = [QQApiImageObject objectWithData:data previewImageData:pData title:title description:desc];
     
-    SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:imageApi];
+    SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:obj];
     
     QQApiSendResultCode code = [QQApiInterface sendReq:request];
-    
+
     NSLog(@"code = %d",code);
 }
 
-/**
- 测试代码
- */
-- (void)shareUrl
+
+- (void)shareToSessionUrl:(NSURL *)url title:(NSString *)title desc:(NSString *)desc previewImageURL:(NSURL *)previewImageURL
 {
-    NSURL *url = [NSURL URLWithString:@"https://news.163.com/18/1118/15/E0TH6O87000189FH.html"];
+//    NSURL *url = [NSURL URLWithString:@"https://news.163.com/18/1118/15/E0TH6O87000189FH.html"];
+//    
+//    NSString *title = @"测试新闻标题FS";
+//
+//    NSString *desc = @"描述信息....";
+//    
+//    NSURL *imageUrl = [NSURL URLWithString:@"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1542536641&di=cb703f8e78eda0e8fb6dc21640b500ab&src=http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/0948545db38f12c59053aa325cb43ae4.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100"];
     
-    NSString *title = @"测试新闻标题FS";
-    
-    NSString *desc = @"描述信息....";
-    
-    NSURL *imageUrl = [NSURL URLWithString:@"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1542536641&di=cb703f8e78eda0e8fb6dc21640b500ab&src=http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/0948545db38f12c59053aa325cb43ae4.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100"];
-    
-    QQApiNewsObject *obj = [QQApiNewsObject objectWithURL:url title:title description:desc previewImageURL:imageUrl];
+    QQApiNewsObject *obj = [QQApiNewsObject objectWithURL:url title:title description:desc previewImageURL:previewImageURL];
     
     SendMessageToQQReq *request = [SendMessageToQQReq reqWithContent:obj];
     
@@ -392,47 +386,60 @@ static NSError * generateErrorWithDesc(NSString *desc)
         
         NSLog(@"expirationDate = %@",_expirationDate);
         
-//        [_oauth getCachedToken];
+        NSLog(@"appId = %@", _oauth.appId);
         
-//        [_oauth getCachedOpenID]
+        /* 获取用户信息的方式
+         1、直接调用系统提供的接口，[self.oauth getUserInfo]。会在代理回调请求结果
+         2、自己发送请求 fs_requestUserInfo
+         */
         
-        if ([self.oauth getUserInfo])
-        {
-            NSLog(@"获取用户信息——成功");
-            
-            /*
-             https://graph.qq.com/user/get_user_info?
-             access_token=*************&
-             oauth_consumer_key=12345&
-             openid=****************
-             */
-            
-            NSString *urlStr = [NSString stringWithFormat:@"https://graph.qq.com/user/get_user_info?access_token=%@&oauth_consumer_key=%@&openid=%@",_oauth.accessToken,_oauth.appId,_oauth.openId];
-            
-            NSURL *url = [NSURL URLWithString:urlStr];
-            
-            NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse * response, NSError *error) {
-                
-                NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                
-                NSLog(@"%@",str);
-                /*
-                 返回json {"ret":100008,"msg":"client request's app is not existed"}
-                 appId不存在，可能是因为app还没有被审核通过吧
-                 */
-            }];
-            
-            [dataTask resume];
-        }
-        else
-        {
-            NSLog(@"获取用户信息——失败");
-        }
+        [self fs_requestUserInfo];
+        
+//        if ([self.oauth getUserInfo])
+//        {
+//            NSLog(@"获取用户信息——成功");
+//                    }
+//        else
+//        {
+//            NSLog(@"获取用户信息——失败");
+//        }
     }
     else
     {
         NSLog(@"没有获取到accessToken");
     }
+}
+
+- (void)fs_requestUserInfo
+{
+    /*
+     https://graph.qq.com/user/get_user_info?
+     access_token=*************&
+     oauth_consumer_key=12345&
+     openid=****************
+     */
+    
+    NSString *urlStr = [NSString stringWithFormat:@"https://graph.qq.com/user/get_user_info?access_token=%@&oauth_consumer_key=%@&openid=%@",_oauth.accessToken,_oauth.appId,_oauth.openId];
+    
+//    urlStr = [NSString stringWithFormat:@"https://graph.qq.com/user/get_user_info?access_token=%@&oauth_consumer_key=%@&openid=%@",_oauth.accessToken,@"123",_oauth.openId];
+//
+//    urlStr = [NSString stringWithFormat:@"https://graph.qq.com/user/get_user_info?access_token=%@&openid=%@",_oauth.accessToken,_oauth.openId];
+
+    NSURL *url = [NSURL URLWithString:urlStr];
+
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse * response, NSError *error) {
+
+        NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+        NSLog(@"%@",str);
+        /*
+         返回json {"ret":100008,"msg":"client request's app is not existed"}
+         appId不存在，可能是因为app还没有被审核通过吧
+         */
+    }];
+
+    [dataTask resume];
+
 }
 
 /**

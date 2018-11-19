@@ -8,8 +8,8 @@
 
 #import "FSConstance.h"
 
-/// 420a59f2
-NSString * const kTencentAppId = @"1107974642";
+/* QQ互联 */
+NSString * const kTencentAppId = @"101520375";
 
-NSString * const kTencentAppKey = @"tHDjuJdKTN76arb6";
+NSString * const kTencentAppKey = @"8cf59c220813f1ad65359338f157afe6";
 
