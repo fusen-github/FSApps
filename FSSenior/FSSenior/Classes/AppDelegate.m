@@ -9,9 +9,7 @@
 #import "AppDelegate.h"
 #import "FSNavigationController.h"
 #import "FSMainController.h"
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
-#import "FSTencentManager.h"
+#import "FSShareTool.h"
 
 
 @interface AppDelegate ()
@@ -41,20 +39,9 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
 {
-    [QQApiInterface handleOpenURL:url delegate:(id<QQApiInterfaceDelegate>)[FSTencentManager shareManager]];
+    BOOL flag = [FSShareTool applicationHandleOpenURL:url];
     
-    if ([TencentOAuth CanHandleOpenURL:url])
-    {
-        NSLog(@"腾讯可以处理url");
-        
-        return [TencentOAuth HandleOpenURL:url];
-    }
-    else
-    {
-        NSLog(@"xx腾讯不能处理url");
-    }
-    
-    return YES;
+    return flag;
 }
 
 

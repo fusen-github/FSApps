@@ -30,6 +30,14 @@
 		04961A8221A2970E001BC7D0 /* f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04961A7C21A2970E001BC7D0 /* f@2x.png */; };
 		04961A8321A2970E001BC7D0 /* b@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04961A7D21A2970E001BC7D0 /* b@2x.png */; };
 		04961A8821A2A18E001BC7D0 /* FSController02.m in Sources */ = {isa = PBXBuildFile; fileRef = 04961A8721A2A18E001BC7D0 /* FSController02.m */; };
+		04961A8D21A2A703001BC7D0 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04961A8C21A2A703001BC7D0 /* libWeChatSDK.a */; };
+		04961A8E21A2A7C1001BC7D0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 041287CB219D66FE00EEC548 /* libz.tbd */; };
+		04961A8F21A2A7D1001BC7D0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 041287D3219D675200EEC548 /* libsqlite3.tbd */; };
+		04961A9121A2A7E8001BC7D0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04961A9021A2A7E8001BC7D0 /* Security.framework */; };
+		04961A9321A2A7F5001BC7D0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04961A9221A2A7F5001BC7D0 /* CoreTelephony.framework */; };
+		04961A9521A2A804001BC7D0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04961A9421A2A804001BC7D0 /* CFNetwork.framework */; };
+		04961A9821A2A993001BC7D0 /* FSWeChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04961A9721A2A993001BC7D0 /* FSWeChatManager.m */; };
+		04961A9B21A2B08D001BC7D0 /* FSShareTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 04961A9A21A2B08C001BC7D0 /* FSShareTool.m */; };
 		04E130F8219FE39A00AF1C43 /* FSTencentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E130F7219FE39A00AF1C43 /* FSTencentManager.m */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +80,16 @@
 		04961A7D21A2970E001BC7D0 /* b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b@2x.png"; sourceTree = "<group>"; };
 		04961A8621A2A18E001BC7D0 /* FSController02.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSController02.h; sourceTree = "<group>"; };
 		04961A8721A2A18E001BC7D0 /* FSController02.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSController02.m; sourceTree = "<group>"; };
+		04961A8A21A2A703001BC7D0 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		04961A8B21A2A703001BC7D0 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		04961A8C21A2A703001BC7D0 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		04961A9021A2A7E8001BC7D0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		04961A9221A2A7F5001BC7D0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		04961A9421A2A804001BC7D0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		04961A9621A2A993001BC7D0 /* FSWeChatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSWeChatManager.h; sourceTree = "<group>"; };
+		04961A9721A2A993001BC7D0 /* FSWeChatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSWeChatManager.m; sourceTree = "<group>"; };
+		04961A9921A2B08C001BC7D0 /* FSShareTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSShareTool.h; sourceTree = "<group>"; };
+		04961A9A21A2B08C001BC7D0 /* FSShareTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSShareTool.m; sourceTree = "<group>"; };
 		04E130F6219FE39A00AF1C43 /* FSTencentManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSTencentManager.h; sourceTree = "<group>"; };
 		04E130F7219FE39A00AF1C43 /* FSTencentManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSTencentManager.m; sourceTree = "<group>"; };
 		04E130FC219FE5D000AF1C43 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -82,8 +100,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04961A9521A2A804001BC7D0 /* CFNetwork.framework in Frameworks */,
+				04961A9321A2A7F5001BC7D0 /* CoreTelephony.framework in Frameworks */,
+				04961A9121A2A7E8001BC7D0 /* Security.framework in Frameworks */,
+				04961A8F21A2A7D1001BC7D0 /* libsqlite3.tbd in Frameworks */,
+				04961A8E21A2A7C1001BC7D0 /* libz.tbd in Frameworks */,
 				041287F3219E89F400EEC548 /* libstdc++.tbd in Frameworks */,
 				041287F2219E89E600EEC548 /* SystemConfiguration.framework in Frameworks */,
+				04961A8D21A2A703001BC7D0 /* libWeChatSDK.a in Frameworks */,
 				041287F0219E88D300EEC548 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,6 +206,7 @@
 		0412876B219D5D9200EEC548 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				04961A8921A2A703001BC7D0 /* WeChat */,
 				041287EE219E88D300EEC548 /* Tencent */,
 			);
 			path = Libs;
@@ -190,6 +215,9 @@
 		041287C8219D66E400EEC548 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04961A9421A2A804001BC7D0 /* CFNetwork.framework */,
+				04961A9221A2A7F5001BC7D0 /* CoreTelephony.framework */,
+				04961A9021A2A7E8001BC7D0 /* Security.framework */,
 				041287F1219E89E600EEC548 /* SystemConfiguration.framework */,
 				041287D5219D675D00EEC548 /* Photos.framework */,
 				041287D3219D675200EEC548 /* libsqlite3.tbd */,
@@ -207,6 +235,8 @@
 			children = (
 				04128806219F204500EEC548 /* FSConstance.h */,
 				04128807219F204500EEC548 /* FSConstance.m */,
+				04961A9921A2B08C001BC7D0 /* FSShareTool.h */,
+				04961A9A21A2B08C001BC7D0 /* FSShareTool.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -246,8 +276,20 @@
 			children = (
 				04961A8621A2A18E001BC7D0 /* FSController02.h */,
 				04961A8721A2A18E001BC7D0 /* FSController02.m */,
+				04961A9621A2A993001BC7D0 /* FSWeChatManager.h */,
+				04961A9721A2A993001BC7D0 /* FSWeChatManager.m */,
 			);
 			path = Controller02;
+			sourceTree = "<group>";
+		};
+		04961A8921A2A703001BC7D0 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				04961A8A21A2A703001BC7D0 /* WXApi.h */,
+				04961A8B21A2A703001BC7D0 /* WXApiObject.h */,
+				04961A8C21A2A703001BC7D0 /* libWeChatSDK.a */,
+			);
+			path = WeChat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,9 +372,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				040481C0219D5A7700CD251D /* FSNavigationController.m in Sources */,
+				04961A9B21A2B08D001BC7D0 /* FSShareTool.m in Sources */,
 				0412876A219D5BDD00EEC548 /* FSController01.m in Sources */,
 				04E130F8219FE39A00AF1C43 /* FSTencentManager.m in Sources */,
 				040481C3219D5A8800CD251D /* FSMainController.m in Sources */,
+				04961A9821A2A993001BC7D0 /* FSWeChatManager.m in Sources */,
 				040481B1219D598400CD251D /* main.m in Sources */,
 				04128808219F204500EEC548 /* FSConstance.m in Sources */,
 				04961A8821A2A18E001BC7D0 /* FSController02.m in Sources */,
@@ -460,6 +504,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = U72R3QQ45L;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FSSenior/Classes/Libs/Tencent",
@@ -471,7 +516,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FSSenior/Classes/Libs/WeChat",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FSSenior.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "05e4eb12-d57a-4830-9259-37b5dce1d277";
@@ -486,6 +538,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FSSenior/Classes/Libs/Tencent",
@@ -497,7 +550,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FSSenior/Classes/Libs/WeChat",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FSSenior.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

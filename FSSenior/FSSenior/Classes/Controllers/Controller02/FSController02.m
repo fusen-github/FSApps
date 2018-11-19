@@ -7,6 +7,8 @@
 //
 
 #import "FSController02.h"
+#import "FSWeChatManager.h"
+
 
 static NSString * const kSectionTitle = @"sectionTitle";
 
@@ -23,6 +25,14 @@ static NSString * const kActionKey = @"action";
 @interface FSController02 (WeChat)
 
 - (void)wx_Login;
+
+- (void)session_shareMsg;
+
+- (void)timeline_shareMsg;
+
+- (void)session_shareImage;
+
+- (void)timeline_shareImage;
 
 @end
 
@@ -52,12 +62,15 @@ static NSString * const kActionKey = @"action";
     
     NSArray *shares =
     @[@{kActionKey:SeletorName(session_shareMsg),kTitleKey:@"分享text文本到WeChat会话"},
+      @{kActionKey:SeletorName(timeline_shareMsg),kTitleKey:@"分享text文本到朋友圈"},
+
       @{kActionKey:SeletorName(session_shareImage),kTitleKey:@"分享image到WeCha会话"},
-      @{kActionKey:SeletorName(session_shareUrl),kTitleKey:@"分享URL到WeCha会话"},
+      @{kActionKey:SeletorName(timeline_shareImage),kTitleKey:@"分享image到朋友圈"},
+      
       ];
-     
-    self.dataArray = @[@{kSectionDatas:logins,kSectionTitle:@"QQ登陆"},
-                       @{kSectionDatas:shares,kSectionTitle:@"分享到QQ会话"}];
+    
+    self.dataArray = @[@{kSectionDatas:logins,kSectionTitle:@"微信登陆"},
+                       @{kSectionDatas:shares,kSectionTitle:@"分享到微信"}];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -125,6 +138,42 @@ static NSString * const kActionKey = @"action";
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [self performSelector:selector];
 #pragma clang diagnostic pop
+}
+
+@end
+
+@implementation FSController02 (Share)
+
+- (void)session_shareMsg
+{
+    [[FSWeChatManager shareManager] shareText:@"测试发送文本..." toSecenType:FSWXSecenTypeSession];
+}
+
+- (void)timeline_shareMsg
+{
+    [[FSWeChatManager shareManager] shareText:@"测试朋友圈..." toSecenType:FSWXSecenTypeTimeline];
+}
+
+- (void)session_shareImage
+{
+    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"11" ofType:@"jpg"];
+    
+    NSData *imgData = [NSData dataWithContentsOfFile:imgPath];
+    
+    UIImage *thunb = [UIImage imageNamed:@"1111"];
+    
+    [[FSWeChatManager shareManager] shareImage:imgData thunbImage:UIImagePNGRepresentation(thunb) toSecenType:FSWXSecenTypeSession];
+}
+
+- (void)timeline_shareImage
+{
+    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"11" ofType:@"jpg"];
+    
+    NSData *imgData = [NSData dataWithContentsOfFile:imgPath];
+    
+    UIImage *thunb = [UIImage imageNamed:@"1111"];
+    
+    [[FSWeChatManager shareManager] shareImage:imgData thunbImage:UIImagePNGRepresentation(thunb) toSecenType:FSWXSecenTypeTimeline];
 }
 
 @end

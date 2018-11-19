@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+/// QQ的app id
 FOUNDATION_EXTERN NSString * const kTencentAppId;
 
+/// QQ的app key
 FOUNDATION_EXTERN NSString * const kTencentAppKey;
 
+/// 微信的app id
+FOUNDATION_EXTERN NSString * const kWeChatAppId;
 
+/// 微信的app secret
+FOUNDATION_EXTERN NSString * const kWeChatAppSecret;

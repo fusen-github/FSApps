@@ -9,7 +9,15 @@
 #import "FSConstance.h"
 
 /* QQ互联 */
-NSString * const kTencentAppId = @"101520375";
+NSString * const kTencentAppId = @"";
 
-NSString * const kTencentAppKey = @"8cf59c220813f1ad65359338f157afe6";
+NSString * const kTencentAppKey = @"";
+
+
+
+/* 微信 */
+NSString * const kWeChatAppId = @"wx2ebef36d973c7a44";
+
+NSString * const kWeChatAppSecret = @"";
+
 
