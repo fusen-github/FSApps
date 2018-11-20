@@ -19,6 +19,13 @@
 		041287F2219E89E600EEC548 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041287F1219E89E600EEC548 /* SystemConfiguration.framework */; };
 		041287F3219E89F400EEC548 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 041287CD219D671C00EEC548 /* libstdc++.tbd */; };
 		04128808219F204500EEC548 /* FSConstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 04128807219F204500EEC548 /* FSConstance.m */; };
+		0460E68621A3ADED0078A577 /* FSController03.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460E68521A3ADED0078A577 /* FSController03.m */; };
+		0460E68921A3B3830078A577 /* FSNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460E68821A3B3830078A577 /* FSNotificationManager.m */; };
+		0460E68D21A3B7310078A577 /* qingchen.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0460E68B21A3B7310078A577 /* qingchen.m4a */; };
+		0460E68E21A3B7310078A577 /* caodi.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 0460E68C21A3B7310078A577 /* caodi.m4a */; };
+		0460E69121A3CE7C0078A577 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0460E68F21A3CE7C0078A577 /* UserNotificationsUI.framework */; };
+		0460E69221A3CE7C0078A577 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0460E69021A3CE7C0078A577 /* UserNotifications.framework */; };
+		0460E69521A400C80078A577 /* FSUNController01.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460E69421A400C80078A577 /* FSUNController01.m */; };
 		049076FB21A1AF4000E855B6 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049076F721A1AF3F00E855B6 /* 11.jpg */; };
 		049076FC21A1AF4000E855B6 /* 354.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049076F821A1AF3F00E855B6 /* 354.jpg */; };
 		049076FD21A1AF4000E855B6 /* 33.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 049076F921A1AF3F00E855B6 /* 33.jpg */; };
@@ -68,6 +75,17 @@
 		041287F1219E89E600EEC548 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		04128806219F204500EEC548 /* FSConstance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSConstance.h; sourceTree = "<group>"; };
 		04128807219F204500EEC548 /* FSConstance.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSConstance.m; sourceTree = "<group>"; };
+		0460E68121A3A7E10078A577 /* FSSenior.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FSSenior.entitlements; sourceTree = "<group>"; };
+		0460E68421A3ADED0078A577 /* FSController03.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSController03.h; sourceTree = "<group>"; };
+		0460E68521A3ADED0078A577 /* FSController03.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSController03.m; sourceTree = "<group>"; };
+		0460E68721A3B3830078A577 /* FSNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSNotificationManager.h; sourceTree = "<group>"; };
+		0460E68821A3B3830078A577 /* FSNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSNotificationManager.m; sourceTree = "<group>"; };
+		0460E68B21A3B7310078A577 /* qingchen.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = qingchen.m4a; sourceTree = "<group>"; };
+		0460E68C21A3B7310078A577 /* caodi.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = caodi.m4a; sourceTree = "<group>"; };
+		0460E68F21A3CE7C0078A577 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		0460E69021A3CE7C0078A577 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		0460E69321A400C80078A577 /* FSUNController01.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSUNController01.h; sourceTree = "<group>"; };
+		0460E69421A400C80078A577 /* FSUNController01.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSUNController01.m; sourceTree = "<group>"; };
 		049076F721A1AF3F00E855B6 /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
 		049076F821A1AF3F00E855B6 /* 354.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 354.jpg; sourceTree = "<group>"; };
 		049076F921A1AF3F00E855B6 /* 33.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 33.jpg; sourceTree = "<group>"; };
@@ -100,6 +118,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0460E69121A3CE7C0078A577 /* UserNotificationsUI.framework in Frameworks */,
+				0460E69221A3CE7C0078A577 /* UserNotifications.framework in Frameworks */,
 				04961A9521A2A804001BC7D0 /* CFNetwork.framework in Frameworks */,
 				04961A9321A2A7F5001BC7D0 /* CoreTelephony.framework in Frameworks */,
 				04961A9121A2A7E8001BC7D0 /* Security.framework in Frameworks */,
@@ -135,6 +155,7 @@
 		040481A0219D598300CD251D /* FSSenior */ = {
 			isa = PBXGroup;
 			children = (
+				0460E68121A3A7E10078A577 /* FSSenior.entitlements */,
 				040481B7219D59DF00CD251D /* Classes */,
 				041287E0219D70CB00EEC548 /* Resources */,
 				040481B8219D59ED00CD251D /* Support */,
@@ -175,6 +196,7 @@
 				040481BA219D5A3E00CD251D /* Base */,
 				04128767219D5BC500EEC548 /* Controller01 */,
 				04961A8521A2A175001BC7D0 /* Controller02 */,
+				0460E68321A3ADD50078A577 /* Controller03 */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -215,6 +237,8 @@
 		041287C8219D66E400EEC548 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0460E69021A3CE7C0078A577 /* UserNotifications.framework */,
+				0460E68F21A3CE7C0078A577 /* UserNotificationsUI.framework */,
 				04961A9421A2A804001BC7D0 /* CFNetwork.framework */,
 				04961A9221A2A7F5001BC7D0 /* CoreTelephony.framework */,
 				04961A9021A2A7E8001BC7D0 /* Security.framework */,
@@ -244,6 +268,7 @@
 		041287E0219D70CB00EEC548 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0460E68A21A3B7310078A577 /* Audio */,
 				04961A7721A2970E001BC7D0 /* 1 */,
 				041287E1219D70CB00EEC548 /* 1111@2x.png */,
 			);
@@ -256,6 +281,28 @@
 				041287EF219E88D300EEC548 /* TencentOpenAPI.framework */,
 			);
 			path = Tencent;
+			sourceTree = "<group>";
+		};
+		0460E68321A3ADD50078A577 /* Controller03 */ = {
+			isa = PBXGroup;
+			children = (
+				0460E68421A3ADED0078A577 /* FSController03.h */,
+				0460E68521A3ADED0078A577 /* FSController03.m */,
+				0460E69321A400C80078A577 /* FSUNController01.h */,
+				0460E69421A400C80078A577 /* FSUNController01.m */,
+				0460E68721A3B3830078A577 /* FSNotificationManager.h */,
+				0460E68821A3B3830078A577 /* FSNotificationManager.m */,
+			);
+			path = Controller03;
+			sourceTree = "<group>";
+		};
+		0460E68A21A3B7310078A577 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0460E68B21A3B7310078A577 /* qingchen.m4a */,
+				0460E68C21A3B7310078A577 /* caodi.m4a */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		04961A7721A2970E001BC7D0 /* 1 */ = {
@@ -323,6 +370,14 @@
 				TargetAttributes = {
 					0404819D219D598300CD251D = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -349,10 +404,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0460E68D21A3B7310078A577 /* qingchen.m4a in Resources */,
 				04961A7F21A2970E001BC7D0 /* c@2x.png in Resources */,
 				04961A8221A2970E001BC7D0 /* f@2x.png in Resources */,
 				04961A8121A2970E001BC7D0 /* d@2x.png in Resources */,
 				049076FD21A1AF4000E855B6 /* 33.jpg in Resources */,
+				0460E68E21A3B7310078A577 /* caodi.m4a in Resources */,
 				04961A8021A2970E001BC7D0 /* a@2x.png in Resources */,
 				049076FB21A1AF4000E855B6 /* 11.jpg in Resources */,
 				040481AB219D598400CD251D /* Assets.xcassets in Resources */,
@@ -375,13 +432,16 @@
 				04961A9B21A2B08D001BC7D0 /* FSShareTool.m in Sources */,
 				0412876A219D5BDD00EEC548 /* FSController01.m in Sources */,
 				04E130F8219FE39A00AF1C43 /* FSTencentManager.m in Sources */,
+				0460E69521A400C80078A577 /* FSUNController01.m in Sources */,
 				040481C3219D5A8800CD251D /* FSMainController.m in Sources */,
 				04961A9821A2A993001BC7D0 /* FSWeChatManager.m in Sources */,
 				040481B1219D598400CD251D /* main.m in Sources */,
+				0460E68921A3B3830078A577 /* FSNotificationManager.m in Sources */,
 				04128808219F204500EEC548 /* FSConstance.m in Sources */,
 				04961A8821A2A18E001BC7D0 /* FSController02.m in Sources */,
 				040481BD219D5A5800CD251D /* FSBaseController.m in Sources */,
 				040481A3219D598300CD251D /* AppDelegate.m in Sources */,
+				0460E68621A3ADED0078A577 /* FSController03.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,8 +562,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FSSenior/FSSenior.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = U72R3QQ45L;
+				DEVELOPMENT_TEAM = RKADU9USNF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,8 +587,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.FSSenior.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "05e4eb12-d57a-4830-9259-37b5dce1d277";
-				PROVISIONING_PROFILE_SPECIFIER = "FastMap Team";
+				PROVISIONING_PROFILE = "4699d13a-43c9-4e9f-bd80-e12bba274f75";
+				PROVISIONING_PROFILE_SPECIFIER = wsqfs;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -536,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FSSenior/FSSenior.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;

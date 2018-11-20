@@ -44,9 +44,9 @@
 
 @implementation FSWeChatManager (Share)
 
-- (void)shareText:(NSString *)text toType:(FSWXSecenType)type
+- (void)shareText:(NSString *)text toSecenType:(FSWXSecenType)type
 {
-    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
     
     req.text = text;
     
